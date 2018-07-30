@@ -1,0 +1,187 @@
+http://www.astate.edu/info/admissions/international/application-status/index.dot
+
+Functions
+Stored Procedures
+Triggers
+
+SQL Server Admin Duties
+
+install & configure server
+plan and create database
+back up the databases
+Restore the database when necessary
+set up and manage users for SQL server
+manage security for new users and existing users
+import and export data
+
+SQL functions
+creating user defined functions
+create function Rsalary(@eid int)
+
+returns smallmoney
+as
+begin
+declare @rsalary smallmoney;
+select @rsalary=salary from employee where eid=@eid;
+return @rsalary
+end
+
+
+use HRD;
+Declare @empSal smallmoney;
+
+Exec @empSal=Rsalary 111;
+
+select @empSal;
+
+
+use HRD;
+go
+create function emprec(@eid int)
+returns table
+as
+return(
+select * from employee where eid=@eid
+)
+go
+
+use HRD;
+select * from emprec(111);
+
+
+/*create procedure getempname(
+@eid int,
+@ename varchar(50) out
+)
+AS 
+Begin
+select @ename=name from employee where eid=@eid;
+End
+create procedure insertRec(
+@eid int,
+@ename varchar(50),
+@salary money
+)
+AS
+Begin
+insert into employee values(
+@eid,
+@ename,
+@salary
+)
+end
+go*/
+create function fsalary(@eid int)
+returns smallmoney
+as 
+begin
+declare @rsalary smallmoney;
+select @rsalary=salary from employee where eid=@eid;
+return @rsalary
+end
+
+
+use HRD;
+/*declare @on varchar(50);
+exec getempname 211,@on output
+select @on;
+*/
+exec insertRec
+@eid=218,
+@ename='Jhilam Nath',
+@salary=6000
+go
+
+
+create function fsalar(@eid int)
+returns money
+as 
+begin
+declare @rsalary money;
+select @rsalary=salary from employee where eid=@eid;
+return @rsalary
+end
+
+DECLARE
+  @salary money;
+exec @salary=fsalar 218;select @salary;
+
+
+
+
+use ECM;
+create table orders(
+oid int not null,
+p_id int not null,
+qty int,
+primary key (oid,p_id),
+foreign key (p_id) references products(p_id),
+cus_id int references customers(cus_id),
+o_date datetime NOT NULL DEFAULT GETDATE()
+)
+
+
+
+insert into products values(008,'Apple iPhone 6s Plus',136,120,120);
+insert into products values(009,'Apple iPhone 6S 64 GB Silver ',136,40,90);
+insert into products values(010,'Microsoft Lumia 540 ',138,40,170);
+insert into products values(011,'Microsoft Lumia 535 Dual Sim 8GB ',138,70,140);
+insert into products values(012,'Micromax P480(Tablet Series) ',140,5,112);
+insert into products values(013,'Micromax P480(Tablet Series) ',140,5,112);
+insert into products values(014,'Micromax Canvas Tab P666 Tablet ',140,5,120);
+insert into products values(015,'Samsung Galaxy Tab E 9.6 ',140,2,260);
+insert into products values(016,'Samsung Galaxy Tab 3V ',140,20,165);
+insert into products values(017,'Asus Fonepad 7" Tablet With Ips Panel ',142,10,240);
+insert into products values(018,'Dell 3552 Celeron 4th Gen 4GB 15.6" ',144,6,310);
+insert into products values(019,'Lenovo Ideapad 110 Dual Core 2GB 15.6"  ',144,6,260);
+insert into products values(020,'Dell Latitude 3160 Touch 4GB 11.6"',144,6,440);
+insert into products values(021,'Panasonic CF-S9 i3 2GB 12.1" ',144,20,225);
+insert into products values(022,'Lenovo B 5130 Dual Core 2GB 15.6" ',144,23,270);
+insert into products values(023,'Fujitsu LH532(059) i5 4GB 14" ',146,7,950);
+insert into products values(024,'Asus T100TA Transformer Book 2GB RAM 10.1"',148,48,500);
+insert into products values(025,'Dell X360 Rotate 7359 i7 6th Gen 8GB 13.3"',148,4,1000);
+insert into products values(026,'Dell 5458 i7 5th Gen 4GB 14" with 2GB Graphics ',148,8,750);
+insert into products values(027,'Fujitsu Lifebook AH532 i3 2Gb 15.6"',148,10,800);
+insert into products values(028,'Asus X200 Touch 4GB 11.6"  ',148,4,400);
+insert into products values(029,'Core 2 Duo Desktop Computer Set"  ',150,14,198);
+insert into products values(030,'Core 2 Duo All In One Desktop Computer Set ',150,50,265);
+insert into products values(031,'Lenovo 300 Core i3 All in One PC',150,4,820);
+insert into products values(032,'Wireless Mouse',152,73,3);
+insert into products values(033,'Wireless Mouse for Desktop and Laptop',152,73,5);
+insert into products values(034,'Prolink Furax 7-colour Illuminated Gaming Mouse(pmg9002)',152,2,7);
+insert into products values(035,'Wireless Mouse',152,73,3);
+insert into products values(036,'Universal Laptop Adapter',154,73,3);
+insert into products values(037,'Laptop Charger for HP 90 Watt',154,73,12);
+insert into products values(038,'Laptop Charger for Asus 65 Watt',154,9,11);
+insert into products values(039,'Combo of Mini Wireless Keyboard',156,86,12);
+insert into products values(040,'Combo of Ultra Thin Wireless Keyboard',156,93,12);
+insert into products values(041,'Jedel Games Series K700 Gaming Keyboard',156,9,25);
+insert into products values(042,'Portable Mini Bluetooth Wireless Keyboard ',156,24,24);
+insert into products values(043,'Transcend Desktop RAM Dimm DDR2 1 GB ',158,9,22);
+insert into products values(044,'Transcend RAM So-Dimm DDR3 4 GB - 1600 MHz  ',158,9,22);
+insert into products values(045,'Asus H81M-P Motherboard',160,9,72);
+insert into products values(046,'Asus H81M-C Motherboard ',160,9,82);
+insert into products values(047,'TOTOLINK AC1200 Wireless Router ',162,10,90);
+insert into products values(048,'TP-Link TL-WN722N Wifi Wireless Adaptor ',162,3,14);
+insert into products values(049,'LB-Link Mini Wireless USB Adapter-150Mbps ',164,10,6);
+insert into products values(050,'LB-Link 300Mbps Wireless USB Adapter ',164,10,14);
+insert into products values(051,'Linksys WAG54GP2 Gateway',164,10,50);
+insert into products values(052,'Kaspersky Antivirus 1 User/PC',168,100,5);
+insert into products values(053,'Kaspersky Antivirus 3 User ',168,100,10);
+insert into products values(054,'Online Attendance Software',170,50,300);
+insert into products values(055,'e-Travel Standard ',170,50,700);
+insert into products values(056,'School Plus Professional  ',172,50,1000);
+insert into products values(057,'School Plus Lite (SPL 2.0)',172,50,250);
+insert into products values(058,'Microsoft Office ',174,50,40);
+insert into products values(059,'Sony KDL-40NX710 1080p',178,50,2000);
+insert into products values(060,'Videocon VMA32HH 720p HD 32" LED TV ',180,50,250);
+insert into products values(061,'Sony 32W700C Smart HD 1080p',182,5,700);
+insert into products values(062,'HD Dish Home Tv',184,100,30);
+insert into products values(063,'HDMI Extend Adapter Converter ',186,100,3);
+insert into products values(064,'Philips Dvp3880K Dvd Player',188,100,700);
+insert into products values(065,'LG Air Conditioner 0.75T',190,100,50);
+insert into products values(066,'Beko 2T Air Conditioner',190,100,1000);
+insert into products values(067,'LG 8 KG Washing Machine ',192,100,500);
+insert into products values(068,'Beko WM5101 5kg Washing Machine',192,100,300);
+insert into products values(069,'Youwe Vaccum Cleaner ',194,100,20);
+insert into products values(070,'Samsung 1800W Vaccum Cleaner',194,100,100);

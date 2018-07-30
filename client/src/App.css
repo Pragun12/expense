@@ -1,0 +1,147 @@
+#sign-in{
+  background-image: url('nature.jpg');
+ 
+  height:100vh;
+}
+
+.login-box{
+
+ position: absolute;
+ top: 0px;
+ left: 34%;
+ height: 100vh;
+ background:linear-gradient(135deg,rgba(57,68,75,.85) 0,rgba(57,68,75,.85) 100%);
+
+}
+.content-wrapper{
+  color: aliceblue;
+  position: relative;
+  top: 20%;
+
+
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.sidenav{
+  height: 100vh;
+  background: #5d6e73;
+  color: white;
+  z-index: 99;
+}
+
+
+
+.intro-section{
+  position: relative;
+  top: 10%;
+  
+}
+
+.menu-section{
+  position: relative;
+  top: 20%;
+  
+}
+
+.nav > li > a{
+  font-weight: 600;
+  padding: 20px 0px;
+  color: white;
+
+}
+
+
+.nav-pills > li.active >a,.nav > li > a:focus, .nav > li > a:hover{
+  background:#337ab7;
+font-weight: 600;
+  padding: 20px 0px;
+}
+
+
+
+.main-content{
+  padding-left: 0px;
+  padding-right: 0px;
+  
+}
+.page-header{
+  height: 72px;
+  padding: 20px;
+  box-sizing:border-box;
+  background: #eee;
+  border-bottom: 1px solid #ddd;
+  line-height: 30px;
+ margin: 0px;
+ position: fixed;
+ width: 100%;
+}
+
+.page-header h1{
+  float: left;
+  color: #5d6e73;
+  font-size: 24.192px;
+  margin-left: 20px;
+  
+}
+.content{
+  
+  top: 90px;
+}
+.center{
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  top:150px;
+  
+}
+.modal-title{
+ text-align: left;
+ font-weight: 700;
+}
+
+.show-expense-header{
+  padding-bottom: 15px;
+  text-align: left;
+  border-bottom:#eee 2px solid;
+}
+
+.error{
+  float: left;
+  color:rgb(245, 117, 117);
+}
+
+.expense-grid{
+  padding: 20px;
+}
+
+.delete-btn{
+  float: right;
+  color: red;
+  font-weight: 800;
+}
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
