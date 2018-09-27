@@ -17,6 +17,8 @@ class Login extends Component {
     
     }
   }
+    
+  
 
   handleSubmit(e){
     e.preventDefault();
@@ -49,6 +51,7 @@ class Login extends Component {
     }
      else{
       
+     let self=this;
 
       axios.post('/api/auth', {
         email: this.state.email,
@@ -64,7 +67,16 @@ class Login extends Component {
        window.location.href='/dashboard';
       })
       .catch(function (error) {
-        
+             
+        self.setState({
+          formErrors:{
+            password:'Incorrect Password'
+          }
+          ,
+          emailValid:true,
+          passwordValid:false
+        });
+
       });
     }
    

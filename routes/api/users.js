@@ -1,14 +1,32 @@
 const express=require("express");
 const router=express.Router();
-
+const bcrypt=require('bcrypt');
 const User=require('../../models/User');
+const authenticate=require('../../middlewares/authenticate');
 
-router.get('/',(req,res)=>{
-    User
-    .find()
-    .then(users=>res.json(users))
-});
+router.get('/:id/expenses',authenticate,function(req,res){
 
+    console.log('CU : '+req.currentUser);
+
+const id=req.params.id;
+
+
+
+Expense.find({
+    userid:id
+  },(err,expense)=>{
+      if(err){
+          res.status(500).send({
+                success:false,
+                msg:"Server Error"
+            });
+        }
+      else{
+          res.json(expense);
+      }  
+  });
+
+})
 
 router.post('/',function(req,res){
    const newUser=new User({
@@ -16,7 +34,7 @@ router.post('/',function(req,res){
     firstname:req.body.firstName,
     lastname:req.body.lastName,
     email:req.body.email,
-    password:req.body.password,
+    password:bcrypt.hashSync(req.body.password,10),
     type:req.body.type
 
    });
@@ -25,7 +43,8 @@ router.post('/',function(req,res){
     if (err){
     //res.status(400);
     res.send({
-        msg:'Invalid Credentials'});
+        msg:'Invalid Credentials'
+    });
     }
     else{
         res.send({

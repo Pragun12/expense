@@ -29,11 +29,8 @@ class ExpenseView extends Component {
 
     const userId=setCurrentUser(localStorage.getItem('jwtToken')).currentUser.id;
 
-    axios.get('/api/expense/getAll',{
-        params: {
-          userid: userId
-        }
-      })
+    axios.get(`/api/users/${userId}/expenses/`
+      )
     .then(function (response) {
      
      self.setState({expenses:response.data})
@@ -47,7 +44,7 @@ class ExpenseView extends Component {
 
   deleteExpense(id){
     var self=this;
-    axios.delete(`/api/expense/${id}`).then(function(res){
+    axios.delete(`/api/expenses/${id}`).then(function(res){
     if(res.status===200){
       self.getExpenses();
     }

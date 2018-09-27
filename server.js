@@ -4,9 +4,11 @@ const bodyParser=require("body-parser");
 const users=require('./routes/api/users');
 var path=require('path');
 const auth=require('./routes/api/auth');
-const expense=require('./routes/api/expense');
+const expenses=require('./routes/api/expenses');
 
 var app=express();
+
+
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname,'public')));
 const db=require("./config/keys").mongoURI;
@@ -16,9 +18,15 @@ mongoose
 .then(()=>console.log("Database connected...."))
 .catch(err=>console.log(err));
 
+console.log(require('os').cpus().length);
+
 app.use('/api/users',users);
 app.use('/api/auth',auth);
-app.use('/api/expense',expense);
+
+
+
+
+app.use('/api/expenses',expenses);
 
 if(process.env.NODE_ENV==='production'){
     app.use(express.static('client/build'));

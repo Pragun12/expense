@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
-    "moment": "^2.22.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-router": "^4.3.1",
@@ -17,5 +16,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:5000"
+  "proxy": "http://localhost:5000",
+  "devDependencies": {
+    "jest-localstorage-mock": "^2.2.0"
+  }
 }

@@ -6,15 +6,16 @@ import Expense from './components/Expense';
 import { Switch,BrowserRouter, Route } from 'react-router-dom';
 import setAuthorizationToken from './utils/setAuthorizationToken';
 
-
+//import localStorage from './utils/localStorage';
 import './App.css';
 import setCurrentUser from './utils/setCurrentUser';
 
 class App extends Component {
   componentWillMount(){
-
+    
+ 
    if(localStorage.getItem('jwtToken')){
-      setAuthorizationToken( localStorage.getItem('jwtToken'));
+      setAuthorizationToken(localStorage.getItem('jwtToken'));  
      
    }
 

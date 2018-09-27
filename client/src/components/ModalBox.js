@@ -135,7 +135,7 @@ class ModalBox extends Component {
        formData.append('file',this.state.file);
         formData.append('comment',this.state.comment);
      
-      axios.post('/api/expense',formData
+      axios.post('/api/expenses',formData
        ,{ 
           headers: {
           'Content-Type': 'multipart/form-data'

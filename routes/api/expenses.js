@@ -1,9 +1,8 @@
 const express=require("express");
 const router=express.Router();
-const jwt=require('jsonwebtoken');
-const config=require('../../confg');
 const Expense=require('../../models/Expense');
-var multer=require('multer');
+const multer=require('multer');
+const authenticate=require('../../middlewares/authenticate');
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -16,7 +15,9 @@ var storage = multer.diskStorage({
   
 var upload = multer({ storage:storage });
 
-router.get('/getAll',function(req,res){
+router.get('/',function(req,res){
+
+  
 
    Expense.find({
       userid:req.query.userid
@@ -47,8 +48,8 @@ router.delete('/:id',function(req,res){
     });
 })
 
-router.put('/',upload.single('file'),function(req,res,next){
-    var id=req.body.id;
+router.put('/:id',upload.single('file'),function(req,res,next){
+    var id=req.params.id;
    
     if(req.file){
       var  filename=req.file.originalname;

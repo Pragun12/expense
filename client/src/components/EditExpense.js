@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import moment from 'moment';
+
 class EditExpense extends Component {
 
     constructor(props) {
@@ -146,9 +146,9 @@ class EditExpense extends Component {
             formData.append('file',this.state.file);
             formData.append('filename',this.state.filename);
             formData.append('comment',this.state.comment);
-            formData.append('id',this.state.id);
+          //  formData.append('id',this.state.id);
 
-            axios.put('/api/expense',formData,{ 
+            axios.put(`/api/expenses/${this.state.id}`,formData,{ 
           headers: {
           'Content-Type': 'multipart/form-data'
           }
@@ -163,9 +163,7 @@ class EditExpense extends Component {
 
     render(){
 
-    
-     
-        let newDate=moment(this.state.date).format('L');
+        let newDate=new Date(this.state.date);
 
         let categoryOptions=this.props.categories.map(category=>{
             
